@@ -15,15 +15,21 @@ The base project setup is based on [Georgii Rychko's project](https://github.com
 ## How to run
 
 Install dependencies:
+
 `npm i`
 
 Start postgres in a Docker container:
+
 `npm run run:pg-docker`
 
 Initialize the database by running migrations and seeding data:
+
 `npm run migrate && npm run seed`
 
 Start the API server:
+
 `npm run start`
 
-API will now be accessible at `http://localhost:3001`
+API will now be accessible at
+
+`http://localhost:3001`
