@@ -1,4 +1,4 @@
-# Reducing mental fatigue: NestJS + Objection.js
+# Stuurkracht API
 
 This is the API for Stuurkracht.be: a website for sending e-cards to support others in need.
 
@@ -16,10 +16,13 @@ The base project setup is based on [Georgii Rychko's project](https://github.com
 
 Install dependencies:
 `npm i`
+
 Start postgres in a Docker container:
 `npm run run:pg-docker`
+
 Initialize the database by running migrations and seeding data:
 `npm run migrate && npm run seed`
+
 Start the API server:
 `npm run start`
 
