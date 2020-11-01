@@ -33,7 +33,7 @@ export class CardsService {
 
   delete(id: number) {
     return transaction(this.modelClass, async (_, trx) => {
-      // TODO: When MessageCardService is added, remove the link first
+      // Keep messages with deleted cards
       // await this.messageCardService.deleteByTagId(id).transacting(trx);
 
       return this.modelClass

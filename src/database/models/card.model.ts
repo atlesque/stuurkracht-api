@@ -9,4 +9,17 @@ export class CardModel extends BaseModel {
   copyright?: string;
   createdBy?: string;
   modifiedBy?: string;
+  isArchived?: boolean;
+
+  static get jsonSchema() {
+    return {
+      type: "object",
+      properties: {
+        isArchived: {
+          type: "boolean",
+          default: false,
+        },
+      },
+    };
+  }
 }

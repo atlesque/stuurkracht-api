@@ -20,26 +20,26 @@ export class MessagesController {
     return this.messagesService.findAll();
   }
 
-  @Get(":id")
+  /* @Get(":id")
   async findOne(@Param("id", new ParseIntPipe()) id: number) {
     return this.messagesService.findOne(id);
-  }
+  } */
 
-  @Post()
+  /* @Post()
   async create(@Body() props: Partial<MessageModel>) {
     return this.messagesService.create(props);
-  }
+  } */
 
-  @Delete(":id")
+  /* @Delete(":id")
   async delete(@Param("id", new ParseIntPipe()) id: number) {
     return this.messagesService.delete(id);
-  }
+  } */
 
-  @Put(":id")
+  /* @Put(":id")
   async update(
     @Param("id", new ParseIntPipe()) id: number,
     @Body() props: Partial<MessageModel>
   ) {
     return this.messagesService.update(id, props);
-  }
+  } */
 }

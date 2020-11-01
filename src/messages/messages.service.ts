@@ -14,24 +14,24 @@ export class MessagesService {
     return this.modelClass.query();
   }
 
-  findOne(id: number) {
+  /* findOne(id: number) {
     return this.modelClass.query().findById(id);
-  }
+  } */
 
-  create(props: Partial<MessageModel>) {
+  /* create(props: Partial<MessageModel>) {
     return this.modelClass.query().insert(props).returning("*");
-  }
+  } */
 
-  update(id: number, props: Partial<MessageModel>) {
+  /* update(id: number, props: Partial<MessageModel>) {
     return this.modelClass
       .query()
       .patch(props)
       .where({ id })
       .returning("*")
       .first();
-  }
+  } */
 
-  delete(id: number) {
+  /* delete(id: number) {
     return transaction(this.modelClass, async (_, trx) => {
       await this.cardService.unsetTheme(id).transacting(trx);
 
@@ -43,5 +43,5 @@ export class MessagesService {
         .first()
         .transacting(trx);
     });
-  }
+  } */
 }
