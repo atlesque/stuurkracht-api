@@ -20,22 +20,22 @@ export class CardsController {
     return this.cardsService.findAll();
   }
 
-  /* @Get(":id")
+  @Get(":id")
   async findOne(@Param("id", new ParseIntPipe()) id: number) {
     return this.cardsService.findOne(id);
   }
 
-  @Post()
+  /* @Post()
   async create(@Body() props: Partial<CardsModel>) {
     return this.cardsService.create(props);
-  }
+  } */
 
-  @Delete(":id")
+  /* @Delete(":id")
   async delete(@Param("id", new ParseIntPipe()) id: number) {
     return this.cardsService.delete(id);
-  }
+  } */
 
-  @Put(":id")
+  /* @Put(":id")
   async update(
     @Param("id", new ParseIntPipe()) id: number,
     @Body() props: Partial<CardsModel>
