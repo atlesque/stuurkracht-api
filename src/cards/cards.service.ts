@@ -31,9 +31,10 @@ export class CardsService {
       .first();
   }
 
-  /* delete(id: number) {
+  delete(id: number) {
     return transaction(this.modelClass, async (_, trx) => {
-      await this.messageCardService.deleteByTagId(id).transacting(trx);
+      // TODO: When MessageCardService is added, remove the link first
+      // await this.messageCardService.deleteByTagId(id).transacting(trx);
 
       return this.modelClass
         .query()
@@ -42,5 +43,5 @@ export class CardsService {
         .first()
         .transacting(trx);
     });
-  } */
+  }
 }

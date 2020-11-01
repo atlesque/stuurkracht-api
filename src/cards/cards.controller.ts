@@ -38,8 +38,8 @@ export class CardsController {
     return this.cardsService.update(id, props);
   }
 
-  /* @Delete(":id")
+  @Delete(":id")
   async delete(@Param("id", new ParseIntPipe()) id: number) {
     return this.cardsService.delete(id);
-  } */
+  }
 }
