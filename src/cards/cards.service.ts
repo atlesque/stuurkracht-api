@@ -18,11 +18,11 @@ export class CardsService {
     return this.modelClass.query().findById(id);
   }
 
-  /* create(props: Partial<CardsModel>) {
+  create(props: Partial<CardModel>) {
     return this.modelClass.query().insert(props).returning("*");
-  } */
+  }
 
-  /* update(id: number, props: Partial<CardsModel>) {
+  /* update(id: number, props: Partial<CardModel>) {
     return this.modelClass
       .query()
       .patch(props)

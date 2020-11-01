@@ -25,10 +25,10 @@ export class CardsController {
     return this.cardsService.findOne(id);
   }
 
-  /* @Post()
-  async create(@Body() props: Partial<CardsModel>) {
+  @Post()
+  async create(@Body() props: Partial<CardModel>) {
     return this.cardsService.create(props);
-  } */
+  }
 
   /* @Delete(":id")
   async delete(@Param("id", new ParseIntPipe()) id: number) {
@@ -38,7 +38,7 @@ export class CardsController {
   /* @Put(":id")
   async update(
     @Param("id", new ParseIntPipe()) id: number,
-    @Body() props: Partial<CardsModel>
+    @Body() props: Partial<CardModel>
   ) {
     return this.cardsService.update(id, props);
   } */
