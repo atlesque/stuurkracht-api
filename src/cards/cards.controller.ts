@@ -30,16 +30,16 @@ export class CardsController {
     return this.cardsService.create(props);
   }
 
-  /* @Delete(":id")
-  async delete(@Param("id", new ParseIntPipe()) id: number) {
-    return this.cardsService.delete(id);
-  } */
-
-  /* @Put(":id")
+  @Put(":id")
   async update(
     @Param("id", new ParseIntPipe()) id: number,
     @Body() props: Partial<CardModel>
   ) {
     return this.cardsService.update(id, props);
+  }
+
+  /* @Delete(":id")
+  async delete(@Param("id", new ParseIntPipe()) id: number) {
+    return this.cardsService.delete(id);
   } */
 }

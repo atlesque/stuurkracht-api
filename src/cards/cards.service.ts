@@ -22,14 +22,14 @@ export class CardsService {
     return this.modelClass.query().insert(props).returning("*");
   }
 
-  /* update(id: number, props: Partial<CardModel>) {
+  update(id: number, props: Partial<CardModel>) {
     return this.modelClass
       .query()
       .patch(props)
       .where({ id })
       .returning("*")
       .first();
-  } */
+  }
 
   /* delete(id: number) {
     return transaction(this.modelClass, async (_, trx) => {
