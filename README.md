@@ -14,7 +14,7 @@ The base project setup is based on [Georgii Rychko's project](https://github.com
 
 ## How to run
 
-Configure environment variables by creating a copy of `.env.example` and rename it to `.env`.
+Configure environment variables by creating a copy of `.env.example` and rename it to `.env`. Fill in any missing variables.
 
 Install dependencies:
 
