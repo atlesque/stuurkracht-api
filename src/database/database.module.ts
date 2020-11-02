@@ -2,10 +2,10 @@ import { Global, Module } from "@nestjs/common";
 import * as Knex from "knex";
 import { knexSnakeCaseMappers, Model } from "objection";
 import { CardModel } from "./models/card.model";
-/* import { MessageModel } from "./models/message.model";
-import { MessageCardModel } from "./models/message-card.model"; */
+import { MessageModel } from "./models/message.model";
+// import { MessageCardModel } from "./models/message-card.model";
 
-const models = [CardModel /* , MessageModel, MessageCardModel */];
+const models = [CardModel, MessageModel /* , MessageCardModel */];
 
 const modelProviders = models.map((model) => {
   return {

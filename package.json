@@ -24,6 +24,7 @@
     "@types/dotenv": "^6.1.1",
     "dotenv": "^8.0.0",
     "knex": "^0.17.5",
+    "node-mailjet": "^3.3.1",
     "objection": "^1.6.9",
     "pg": "^7.11.0",
     "reflect-metadata": "0.1.13",
