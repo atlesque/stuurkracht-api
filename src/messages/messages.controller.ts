@@ -20,10 +20,10 @@ export class MessagesController {
     return this.messagesService.findAll();
   }
 
-  /* @Get(":id")
+  @Get(":id")
   async findOne(@Param("id", new ParseIntPipe()) id: number) {
     return this.messagesService.findOne(id);
-  } */
+  }
 
   @Post()
   async create(@Body() props: Partial<MessageModel>) {

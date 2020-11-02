@@ -14,9 +14,9 @@ export class MessagesService {
     return this.modelClass.query();
   }
 
-  /* findOne(id: number) {
+  findOne(id: number) {
     return this.modelClass.query().findById(id);
-  } */
+  }
 
   async create(props: Partial<MessageModel>) {
     // TODO
