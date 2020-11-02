@@ -15,10 +15,10 @@ import { MessageModel } from "../database/models/message.model";
 export class MessagesController {
   constructor(private messagesService: MessagesService) {}
 
-  /* @Get()
+  @Get()
   async findAll() {
     return this.messagesService.findAll();
-  } */
+  }
 
   /* @Get(":id")
   async findOne(@Param("id", new ParseIntPipe()) id: number) {

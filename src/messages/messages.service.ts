@@ -10,9 +10,9 @@ export class MessagesService {
     @Inject("MessageModel") private modelClass: ModelClass<MessageModel>
   ) {}
 
-  /* findAll() {
+  findAll() {
     return this.modelClass.query();
-  } */
+  }
 
   /* findOne(id: number) {
     return this.modelClass.query().findById(id);
