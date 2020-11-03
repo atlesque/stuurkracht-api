@@ -7,7 +7,7 @@ export class CardsService {
   constructor(@Inject("CardModel") private modelClass: ModelClass<CardModel>) {}
 
   findAll() {
-    return this.modelClass.query();
+    return this.modelClass.query().where("isArchived", false);
   }
 
   findOne(id: number) {
