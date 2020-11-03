@@ -1,9 +1,17 @@
 import { Module } from "@nestjs/common";
 import { CardsModule } from "./cards/cards.module";
 import { MessagesModule } from "./messages/messages.module";
+import { UsersModule } from "./users/users.module";
 import { DatabaseModule } from "./database/database.module";
+import { AuthModule } from "./auth/auth.module";
 
 @Module({
-  imports: [CardsModule, MessagesModule, DatabaseModule],
+  imports: [
+    CardsModule,
+    MessagesModule,
+    UsersModule,
+    DatabaseModule,
+    AuthModule,
+  ],
 })
 export class ApplicationModule {}

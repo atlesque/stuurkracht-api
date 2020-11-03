@@ -7,14 +7,17 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  UseGuards,
 } from "@nestjs/common";
 import { MessagesService } from "./messages.service";
 import { MessageModel } from "../database/models/message.model";
+import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard";
 
 @Controller("messages")
 export class MessagesController {
   constructor(private messagesService: MessagesService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   async findAll() {
     return this.messagesService.findAll();

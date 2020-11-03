@@ -1,16 +1,14 @@
 import * as Knex from "knex";
 
-const tableName = "cards";
+const tableName = "users";
 
 export async function up(knex: Knex) {
   return knex.schema.createTable(tableName, (t) => {
     // this creates an "id" column that gets auto-incremented
     t.increments();
 
-    t.string("name").notNullable();
-    t.string("picture", 1000).notNullable();
-
-    t.string("copyright");
+    t.string("username").notNullable();
+    t.string("password").notNullable();
 
     t.dateTime("dateCreated");
     t.dateTime("dateModified");

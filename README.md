@@ -35,3 +35,9 @@ Start the API server:
 API will now be accessible at
 
 `http://localhost:3001`
+
+## Debugging
+
+To enable debugging in VSCode, press CTRL+SHIFT+P to open the command window and search for `Auto Attach`. Set this to `Smart`.
+
+Now whenever you start the server from the built-in VSCode terminal, (CTRL+SHIFT+`), the debugger will automatically start.

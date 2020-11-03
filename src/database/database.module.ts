@@ -3,9 +3,9 @@ import * as Knex from "knex";
 import { knexSnakeCaseMappers, Model } from "objection";
 import { CardModel } from "./models/card.model";
 import { MessageModel } from "./models/message.model";
-// import { MessageCardModel } from "./models/message-card.model";
+import { UserModel } from "./models/user.model";
 
-const models = [CardModel, MessageModel /* , MessageCardModel */];
+const models = [CardModel, MessageModel, UserModel];
 
 const modelProviders = models.map((model) => {
   return {
