@@ -1,6 +1,6 @@
-import { BaseModel } from "./base.model";
+import { BaseUuidModel } from "./base-uuid.model";
 
-export class MessageModel extends BaseModel {
+export class MessageModel extends BaseUuidModel {
   static tableName = "messages";
 
   cardId!: number;

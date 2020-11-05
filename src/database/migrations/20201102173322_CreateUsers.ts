@@ -4,13 +4,10 @@ const tableName = "users";
 
 export async function up(knex: Knex) {
   return knex.schema.createTable(tableName, (t) => {
-    // this creates an "id" column that gets auto-incremented
-    t.increments();
-
-    t.string("username").notNullable();
+    t.string("username").notNullable().primary();
     t.string("password").notNullable();
 
-    t.dateTime("dateCreated");
+    t.dateTime("dateCreated").notNullable().defaultTo(knex.fn.now());
     t.dateTime("dateModified");
     t.string("createdBy");
     t.string("modifiedBy");

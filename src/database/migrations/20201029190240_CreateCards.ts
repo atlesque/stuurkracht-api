@@ -12,7 +12,7 @@ export async function up(knex: Knex) {
 
     t.string("copyright");
 
-    t.dateTime("dateCreated");
+    t.dateTime("dateCreated").notNullable().defaultTo(knex.fn.now());
     t.dateTime("dateModified");
     t.string("createdBy");
     t.string("modifiedBy");

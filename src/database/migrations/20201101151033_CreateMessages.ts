@@ -5,7 +5,9 @@ const tableName = "messages";
 export async function up(knex: Knex) {
   return knex.schema.createTable(tableName, (t) => {
     // this creates an "id" column that gets auto-incremented
-    t.increments();
+    // t.increments();
+
+    t.uuid("uuid").primary();
 
     t.integer("cardId")
       .references("id")
@@ -20,10 +22,8 @@ export async function up(knex: Knex) {
 
     t.string("body", 2000);
 
-    t.dateTime("dateCreated");
+    t.dateTime("dateCreated").notNullable().defaultTo(knex.fn.now());
     t.dateTime("dateModified");
-    t.string("createdBy");
-    t.string("modifiedBy");
   });
 }
 
