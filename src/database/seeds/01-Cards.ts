@@ -90,7 +90,7 @@ export async function seed(knex: Knex): Promise<any> {
     {
       name: "Gedicht: Je blijft in mij",
       picture:
-        "https://stuurkracht.be/wp-content/uploads/2018/02/741D9EB2-2F78-499A-84E5-5684DCD123ED-261x350.jpeg",
+        "https://stuurkracht.be/wp-content/uploads/2018/02/741D9EB2-2F78-499A-84E5-5684DCD123ED.jpeg",
       createdBy: "Alex",
     },
     {
@@ -102,13 +102,13 @@ export async function seed(knex: Knex): Promise<any> {
     {
       name: "Reflectie van glasraam",
       picture:
-        "https://stuurkracht.be/wp-content/uploads/2018/02/1AD5A5D5-785F-4541-AD6B-206667415C0F-263x350.jpeg",
+        "https://stuurkracht.be/wp-content/uploads/2018/02/1AD5A5D5-785F-4541-AD6B-206667415C0F.jpeg",
       createdBy: "Alex",
     },
     {
       name: "Vioolspeler",
       picture:
-        "https://stuurkracht.be/wp-content/uploads/2018/02/DSC02246-web-web-478x350.jpg",
+        "https://stuurkracht.be/wp-content/uploads/2018/02/DSC02246-web-web.jpg",
       createdBy: "Alex",
     },
     {
