@@ -13,12 +13,12 @@ export async function up(knex: Knex) {
       .notNullable()
       .onDelete("cascade");
 
-    t.string("senderName").notNullable();
-    t.string("senderEmail").notNullable();
-    t.string("recipientName").notNullable();
-    t.string("recipientEmail").notNullable();
+    t.string("senderName", 100).notNullable();
+    t.string("senderEmail", 320).notNullable();
+    t.string("recipientName", 100).notNullable();
+    t.string("recipientEmail", 320).notNullable();
 
-    t.text("body");
+    t.string("body", 2000);
 
     t.dateTime("dateCreated");
     t.dateTime("dateModified");
