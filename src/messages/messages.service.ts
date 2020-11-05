@@ -14,7 +14,7 @@ export class MessagesService {
     return this.modelClass.query();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.modelClass.query().findById(id);
   }
 

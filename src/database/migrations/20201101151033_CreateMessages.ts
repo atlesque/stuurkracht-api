@@ -7,7 +7,7 @@ export async function up(knex: Knex) {
     // this creates an "id" column that gets auto-incremented
     // t.increments();
 
-    t.uuid("uuid").primary();
+    t.uuid("id").primary();
 
     t.integer("cardId")
       .references("id")

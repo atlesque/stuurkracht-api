@@ -24,7 +24,7 @@ export class MessagesController {
   }
 
   @Get(":id")
-  async findOne(@Param("id", new ParseIntPipe()) id: number) {
+  async findOne(@Param("id") id: string) {
     return this.messagesService.findOne(id);
   }
 
