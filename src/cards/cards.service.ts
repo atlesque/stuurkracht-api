@@ -14,11 +14,11 @@ export class CardsService {
     return this.modelClass.query().findById(id);
   }
 
-  create(props: Partial<CardModel>) {
+  create(props: CardModel) {
     return this.modelClass.query().insert(props).returning("*");
   }
 
-  update(id: number, props: Partial<CardModel>) {
+  update(id: number, props: CardModel) {
     return this.modelClass
       .query()
       .patch(props)
@@ -27,14 +27,7 @@ export class CardsService {
       .first();
   }
 
-  delete(id: number) {
-    return transaction(this.modelClass, async (_, trx) => {
-      return this.modelClass
-        .query()
-        .deleteById(id)
-        .returning("*")
-        .first()
-        .transacting(trx);
-    });
+  async delete(id: number) {
+    return this.modelClass.query().deleteById(id).returning("*").first();
   }
 }

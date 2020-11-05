@@ -15,10 +15,14 @@ export class MessagesService {
   }
 
   findOne(id: string) {
-    return this.modelClass.query().findById(id);
+    return this.modelClass
+      .query()
+      .select("id", "senderName", "body")
+      .findById(id)
+      .withGraphFetched("card");
   }
 
-  async create(props: Partial<MessageModel>) {
+  async create(props: MessageModel) {
     // TODO
     const mailjet = require("node-mailjet").connect(
       process.env.MJ_APIKEY_PUBLIC,
@@ -57,7 +61,7 @@ export class MessagesService {
     }
   }
 
-  /* update(id: number, props: Partial<MessageModel>) {
+  /* update(id: number, props: MessageModel) {
     return this.modelClass
       .query()
       .patch(props)

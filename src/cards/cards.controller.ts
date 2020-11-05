@@ -29,7 +29,7 @@ export class CardsController {
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  async create(@Body() props: Partial<CardModel>) {
+  async create(@Body() props: CardModel) {
     return this.cardsService.create(props);
   }
 
@@ -37,7 +37,7 @@ export class CardsController {
   @Put(":id")
   async update(
     @Param("id", new ParseIntPipe()) id: number,
-    @Body() props: Partial<CardModel>
+    @Body() props: CardModel
   ) {
     return this.cardsService.update(id, props);
   }

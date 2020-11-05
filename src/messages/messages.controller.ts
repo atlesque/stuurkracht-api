@@ -29,7 +29,7 @@ export class MessagesController {
   }
 
   @Post()
-  async create(@Body() props: Partial<MessageModel>) {
+  async create(@Body() props: MessageModel) {
     return this.messagesService.create(props);
   }
 
@@ -41,7 +41,7 @@ export class MessagesController {
   /* @Put(":id")
   async update(
     @Param("id", new ParseIntPipe()) id: number,
-    @Body() props: Partial<MessageModel>
+    @Body() props: MessageModel
   ) {
     return this.messagesService.update(id, props);
   } */
