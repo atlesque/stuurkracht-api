@@ -36,7 +36,11 @@ export class MessagesController {
   async create(@Body() props: MessageModel) {
     const newMessage = await this.messagesService.create(props);
     if (newMessage.id != null) {
-      this.mailService.sendMessage(newMessage);
+      try {
+        const response = await this.mailService.sendMessage(newMessage);
+      } catch (err) {
+        throw new Error("Fout bij versturen van email");
+      }
     }
     return newMessage;
   }
