@@ -13,6 +13,7 @@ import { MessagesService } from "./messages.service";
 import { MessageModel } from "../database/models/message.model";
 import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard";
 import { MailService } from "../mail/mail.service";
+import HTTP from "axios";
 
 @Controller("messages")
 export class MessagesController {
@@ -33,11 +34,26 @@ export class MessagesController {
   }
 
   @Post()
-  async create(@Body() props: MessageModel) {
-    const newMessage = await this.messagesService.create(props);
+  async create(@Body() request: any) {
+    const { recaptchaResponse, ...messageProps } = request;
+    const recaptchaVerificationResponse = await HTTP.post(
+      "https://www.google.com/recaptcha/api/siteverify",
+      null, // Use query params instead of POST body
+      {
+        params: {
+          secret: process.env.RECAPTCHA_SECRET,
+          response: recaptchaResponse,
+        },
+      }
+    );
+    const recaptchaResult = recaptchaVerificationResponse.data;
+    if (recaptchaResult.success !== true) {
+      throw new Error("De reCAPTCHA verificatie is mislukt");
+    }
+    const newMessage = await this.messagesService.create(messageProps);
     if (newMessage.id != null) {
       try {
-        const response = await this.mailService.sendMessage(newMessage);
+        await this.mailService.sendMessage(newMessage);
       } catch (err) {
         throw new Error("Fout bij versturen van email");
       }

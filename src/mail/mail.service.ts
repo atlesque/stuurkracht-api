@@ -5,7 +5,6 @@ import * as mailjetService from "node-mailjet";
 @Injectable()
 export class MailService {
   sendMessage(newMessage: MessageModel) {
-    // TODO: Recaptcha verification and Mailjet template
     const mailjet = mailjetService.connect(
       process.env.MJ_APIKEY_PUBLIC,
       process.env.MJ_APIKEY_PRIVATE
