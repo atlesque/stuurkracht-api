@@ -23,42 +23,7 @@ export class MessagesService {
   }
 
   async create(props: MessageModel) {
-    // TODO
-    const mailjet = require("node-mailjet").connect(
-      process.env.MJ_APIKEY_PUBLIC,
-      process.env.MJ_APIKEY_PRIVATE
-    );
-    const request = mailjet.post("send", { version: "v3.1" }).request({
-      Messages: [
-        {
-          From: {
-            Email: "info@stuurkracht.be",
-            Name: "Stuurkracht",
-          },
-          To: [
-            {
-              Email: props.recipientEmail,
-              Name: props.recipientName,
-            },
-          ],
-          Subject: `${props.senderName} stuurt je kracht`,
-          TextPart: `Je ontving een kaart van ${props.senderName}. Je kan deze hier bekijken: https://stuurkracht.be/boodschap/123`,
-          HTMLPart: `
-          <h1>Je ontving een kaart van ${props.senderName}.</h1>
-          <p>Je kan deze hier bekijken:
-            <a href="https://stuurkracht.be/boodschap/123">https://stuurkracht.be/boodschap/123</a>
-          </p>
-          `,
-        },
-      ],
-    });
-    try {
-      const response = await request;
-      console.log(response.body);
-      return this.modelClass.query().insert(props).returning("*");
-    } catch (err) {
-      throw new Error(`Error sending message: ${err}`);
-    }
+    return this.modelClass.query().insert(props).returning("*");
   }
 
   /* update(id: number, props: MessageModel) {

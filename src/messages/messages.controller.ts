@@ -12,10 +12,14 @@ import {
 import { MessagesService } from "./messages.service";
 import { MessageModel } from "../database/models/message.model";
 import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard";
+import { MailService } from "../mail/mail.service";
 
 @Controller("messages")
 export class MessagesController {
-  constructor(private messagesService: MessagesService) {}
+  constructor(
+    private messagesService: MessagesService,
+    private mailService: MailService
+  ) {}
 
   @UseGuards(JwtAuthGuard)
   @Get()
@@ -30,7 +34,11 @@ export class MessagesController {
 
   @Post()
   async create(@Body() props: MessageModel) {
-    return this.messagesService.create(props);
+    const newMessage = await this.messagesService.create(props);
+    if (newMessage.id != null) {
+      this.mailService.sendMessage(newMessage);
+    }
+    return newMessage;
   }
 
   /* @Delete(":id")
