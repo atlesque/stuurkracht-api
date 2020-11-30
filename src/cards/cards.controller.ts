@@ -7,15 +7,24 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  Req,
+  UploadedFile,
   UseGuards,
+  UseInterceptors,
 } from "@nestjs/common";
 import { CardsService } from "./cards.service";
 import { CardModel } from "../database/models/card.model";
 import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard";
+import { FileInterceptor } from "@nestjs/platform-express/multer/interceptors/file.interceptor";
+import { S3FileUploadService } from "../s3-file-upload/s3-file-upload.service";
+import { v4 as uuid } from "uuid";
 
 @Controller("cards")
 export class CardsController {
-  constructor(private cardsService: CardsService) {}
+  constructor(
+    private cardsService: CardsService,
+    private s3FileUploadService: S3FileUploadService
+  ) {}
 
   @Get()
   async findAll() {
@@ -29,8 +38,29 @@ export class CardsController {
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  async create(@Body() props: CardModel) {
-    return this.cardsService.create(props);
+  @UseInterceptors(FileInterceptor("picture"))
+  async create(
+    @Body() request: any,
+    @UploadedFile() imageFile,
+    @Req() rawRequest
+  ) {
+    if (imageFile.mimetype.includes("image/") === false) {
+      throw new Error("File is not an image");
+    }
+    const uuidPrefix = uuid();
+    const fileUrl = await this.s3FileUploadService.uploadImage(
+      imageFile,
+      `stuurkracht/card/${uuidPrefix}-${imageFile.originalname}`
+    );
+    const newCard: Partial<CardModel> = {
+      name: request.cardName,
+      picture: `https://${process.env.S3_ENDPOINT_URL}/${process.env.S3_BUCKET_NAME}/${fileUrl}`,
+      createdBy: rawRequest.user.username,
+    };
+    if (request.authorName != null && request.authorName.length > 0) {
+      newCard.copyright = request.authorName;
+    }
+    return this.cardsService.create(newCard);
   }
 
   @UseGuards(JwtAuthGuard)

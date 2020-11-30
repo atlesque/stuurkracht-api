@@ -14,7 +14,7 @@ export class CardsService {
     return this.modelClass.query().findById(id);
   }
 
-  create(props: CardModel) {
+  create(props: Partial<CardModel>) {
     return this.modelClass.query().insert(props).returning("*");
   }
 
