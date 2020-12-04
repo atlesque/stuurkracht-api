@@ -53,12 +53,12 @@ export class CardsController {
       `stuurkracht/card/${uuidPrefix}-${imageFile.originalname}`
     );
     const newCard: Partial<CardModel> = {
-      name: request.cardName,
+      name: request.name,
       picture: `https://${process.env.S3_ENDPOINT_URL}/${process.env.S3_BUCKET_NAME}/${fileUrl}`,
       createdBy: rawRequest.user.username,
     };
-    if (request.authorName != null && request.authorName.length > 0) {
-      newCard.copyright = request.authorName;
+    if (request.copyright != null && request.copyright.length > 0) {
+      newCard.copyright = request.copyright;
     }
     return this.cardsService.create(newCard);
   }
