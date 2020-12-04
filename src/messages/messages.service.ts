@@ -10,8 +10,7 @@ export class MessagesService {
     @Inject("MessageModel") private modelClass: ModelClass<MessageModel>
   ) {}
 
-  findAll() {
-    // return this.modelClass.query();
+  findAll(page: number = 0, pageSize: number = 10) {
     return this.modelClass
       .query()
       .withGraphFetched("card(selectPicture)")
@@ -20,7 +19,8 @@ export class MessagesService {
           builder.select("picture");
         },
       })
-      .orderBy("dateCreated", "desc");
+      .orderBy("dateCreated", "desc")
+      .page(page, pageSize);
   }
 
   findOne(id: string) {

@@ -7,6 +7,7 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  Query,
   UseGuards,
 } from "@nestjs/common";
 import { MessagesService } from "./messages.service";
@@ -24,8 +25,11 @@ export class MessagesController {
 
   @UseGuards(JwtAuthGuard)
   @Get()
-  async findAll() {
-    return this.messagesService.findAll();
+  async findAll(
+    @Query("page") page: number = 0,
+    @Query("pageSize") pageSize: number = 10
+  ) {
+    return this.messagesService.findAll(page, pageSize);
   }
 
   @Get(":id")
