@@ -11,7 +11,16 @@ export class MessagesService {
   ) {}
 
   findAll() {
-    return this.modelClass.query();
+    // return this.modelClass.query();
+    return this.modelClass
+      .query()
+      .withGraphFetched("card(selectPicture)")
+      .modifiers({
+        selectPicture: (builder) => {
+          builder.select("picture");
+        },
+      })
+      .orderBy("dateCreated", "desc");
   }
 
   findOne(id: string) {
