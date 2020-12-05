@@ -32,6 +32,13 @@ export class MessagesController {
     return this.messagesService.findAll(page, pageSize);
   }
 
+  // HACK: We have to define /statistics first, otherwise /:id gets matched first
+  @UseGuards(JwtAuthGuard)
+  @Get("statistics")
+  async getStatistics() {
+    return this.messagesService.getStatistics();
+  }
+
   @Get(":id")
   async findOne(@Param("id") id: string) {
     return this.messagesService.findOne(id);
