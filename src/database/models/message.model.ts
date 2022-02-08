@@ -1,5 +1,5 @@
-import { BaseUuidModel } from "./base-uuid.model";
 import { Model } from "objection";
+import { BaseUuidModel } from "./base-uuid.model";
 import { CardModel } from "./card.model";
 
 export class MessageModel extends BaseUuidModel {
@@ -9,8 +9,8 @@ export class MessageModel extends BaseUuidModel {
   senderName!: string;
   senderEmail!: string;
   recipientName!: string;
-  recipientEmail!: string;
 
+  recipientEmail?: string;
   body?: string;
 
   static get relationMappings() {
@@ -25,15 +25,4 @@ export class MessageModel extends BaseUuidModel {
       },
     };
   }
-
-  /* static relationMappings = {
-    card: {
-      relation: Model.HasOneRelation,
-      modelClass: CardModel,
-      join: {
-        from: "messages.cardId",
-        to: "cards.id",
-      },
-    },
-  }; */
 }

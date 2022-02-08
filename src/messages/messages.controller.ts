@@ -1,20 +1,13 @@
 import {
   Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  ParseIntPipe,
-  Post,
-  Put,
-  Query,
-  UseGuards,
+  Controller, Get,
+  Param, Post, Query,
+  UseGuards
 } from "@nestjs/common";
-import { MessagesService } from "./messages.service";
-import { MessageModel } from "../database/models/message.model";
+import HTTP from "axios";
 import { JwtAuthGuard } from "../auth/guards/jwt-auth.guard";
 import { MailService } from "../mail/mail.service";
-import HTTP from "axios";
+import { MessagesService } from "./messages.service";
 
 @Controller("messages")
 export class MessagesController {
@@ -62,7 +55,7 @@ export class MessagesController {
       throw new Error("De reCAPTCHA verificatie is mislukt");
     }
     const newMessage = await this.messagesService.create(messageProps);
-    if (newMessage.id != null) {
+    if (newMessage.id != null && (newMessage.recipientEmail || "").length > 0) {
       try {
         await this.mailService.sendMessage(newMessage);
       } catch (err) {

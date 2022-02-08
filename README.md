@@ -36,6 +36,18 @@ API will now be accessible at
 
 `http://localhost:3001`
 
+## Migrations
+
+When making changes to the database models, it is necessary to create a migration:
+
+`npm run migrate:make MigrationName`
+
+This will generate a migration file in `/src/database/migrations/`.
+
+Edit this file and add your changes to the model here.
+
+You can then run `npm run migrate` to perform the migration on the database.
+
 ## Debugging
 
 To enable debugging in VSCode, press CTRL+SHIFT+P to open the command window and search for `Auto Attach`. Set this to `Smart`.
