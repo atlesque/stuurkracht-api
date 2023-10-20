@@ -54,7 +54,7 @@ export class CardsController {
     );
     const newCard: Partial<CardModel> = {
       name: request.name,
-      picture: `https://${process.env.S3_ENDPOINT_URL}/${process.env.S3_BUCKET_NAME}/${fileUrl}`,
+      picture: `https://${process.env.S3_PUBLIC_ENDPOINT_URL}/${process.env.S3_BUCKET_NAME}/${fileUrl}`,
       createdBy: rawRequest.user.username,
     };
     if (request.copyright != null && request.copyright.length > 0) {
